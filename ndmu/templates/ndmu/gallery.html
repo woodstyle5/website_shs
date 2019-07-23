@@ -1,0 +1,142 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Favicon -->
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'favicon/apple-touch-icon-144x144.png' %}" />
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="{% static 'favicon/apple-touch-icon-152x152.png' %}" />
+	<link rel="icon" type="image/png" href="{% static 'favicon/favicon-32x32.png' %}" sizes="32x32" />
+	<link rel="icon" type="image/png" href="{% static 'favicon/favicon-16x16.png' %}" sizes="16x16" />
+	<meta name="application-name" content="&nbsp;"/>
+	<meta name="msapplication-TileColor" content="#FFFFFF" />
+	<meta name="msapplication-TileImage" content="{% static 'favicon/mstile-144x144.png' %}" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	{% if title %}
+		<title>NDMU - {{ title }}</title>
+	{% else %}
+		<title>Notre Dame of Marbel University - SHS</title>
+	{% endif %}
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'ndmu/gallery.css' %}">
+
+</head>
+<body>
+
+<div class="sidenav">
+  <small><a href="{% url 'ndmu-home' %}">Home</a></small>
+</div>
+<div class="container gallery-container">
+    <h1>NDMU - SHS Gallery</h1>
+    <p class="page-description text-center">Official Gallery of NDMU SHS</p>
+    <div class="tz-gallery">
+        <div class="row">
+            {% for gallery in galleries %}
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <a class="lightbox" href="{{ gallery.image.url }}">
+                        <img src="{{ gallery.image.url }}" alt="Park">
+                    </a>
+                    <div class="caption">
+                        <h3>{{ gallery.title }}</h3>
+                        <p>{{ gallery.info }}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <center>No Images At The Moment</center>
+           {% endfor %}
+        </div>
+    </div>
+</div>
+	{% if is_paginated %}
+	<center>
+		{% if page_obj.has_previous %}
+			<a class="btn btn-outline-info mb-4" href="?page=1"><i class="fa fa-angle-double-right fa-flip-horizontal" aria-hidden="true"></i></a>
+			<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}"><i class="fa fa-angle-right fa-flip-horizontal" aria-hidden="true"></i></a>
+		{% endif %}
+
+		{% for num in page_obj.paginator.page_range %}
+			{% if page_obj.number == num %}
+				<a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+			{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+				<a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+			{% endif %}
+		{% endfor %}
+
+		{% if page_obj.has_next %}
+			<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+			<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+		{% endif %}
+	</center>
+	{% endif %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+</script>
+<br>
+<br>
+    <footer class="footer">
+      <div>
+        <center><p class="text-muted"><font style="font-size: 12px;" color="white">Copyright &copy; 2019 Notre Dame of Marbel University | Developed by Kent Jamila</font></p></center>
+      </div>
+    </footer>
+
+</body>
+</html>
+
+<!--
+{% load static %}
+{% block content %}
+<hr class="featurette-divider">
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Gallery</h1>
+		  <p>All of the images taken from the events will be posted here.</p>
+        </div>
+      </section>
+<br>
+<center>
+<hr>
+	{% for gallery in galleries %}
+<br>
+
+<img width="100%" height="100%" src="{{ gallery.image.url }}" alt="ndmu">
+<h3>{{ gallery.title }}</h3>
+<p>{{ gallery.info }}</p>
+<hr>
+	{% empty %}
+	No images yet
+	{% endfor %}
+
+
+
+</center>
+<br>
+	{% if is_paginated %}
+	<center>
+		{% if page_obj.has_previous %}
+			<a class="btn btn-outline-info mb-4" href="?page=1"><i class="fa fa-angle-double-right fa-flip-horizontal" aria-hidden="true"></i></a>
+			<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}"><i class="fa fa-angle-right fa-flip-horizontal" aria-hidden="true"></i></a>
+		{% endif %}
+
+		{% for num in page_obj.paginator.page_range %}
+			{% if page_obj.number == num %}
+				<a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+			{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+				<a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+			{% endif %}
+		{% endfor %}
+
+		{% if page_obj.has_next %}
+			<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+			<a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+		{% endif %}
+	</center>
+	{% endif %}
+{% endblock content %} -->

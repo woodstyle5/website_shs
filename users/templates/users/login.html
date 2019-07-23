@@ -1,0 +1,19 @@
+{% extends "ndmu/base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+
+		<form class="form-signin" method="POST">
+			{% csrf_token %}
+      <Br>
+				<center><img src="{% static 'images/ndmu.png' %}" height="150" width="150"></center>
+				<center><strong>Admin Log-in Menu</strong></center>
+        <hr>
+				{{ form|crispy }}
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <hr>
+            <center><p class="mt-5 mb-3 text-muted">&copy; 2018</p></center>
+            
+		</form>
+{% endblock content %}

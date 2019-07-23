@@ -1,0 +1,20 @@
+{% extends "ndmu/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<center>
+	    <img class="rounded border border-dark" src="{{ user.profile.image.url }}">
+	    <div class="media-body">
+	      <h2 class="account-heading">{{ user.username }}</h2>	      
+	      <p class="text-secondary">{{ user.email }}</p>
+	      <a class="btn btn-outline-secondary btn-sm mt-1 mb-1" href="{% url 'updateprofile' %}">Edit Profile</a>
+	    </div>
+</center>
+
+{% endblock content %}

@@ -1,0 +1,12 @@
+Run cmd in C:\Users\-\Documents\\\NDMU WEBSITE\kentstem8
+->
+pip install -r requirements.txt
+->
+to create an account type this in cmd = python manage.py createsuperuser
+->
+to start the web type this in cmd = python manage.py runserver 
+->
+open google chrome > localhost:8000
+->
+admin page > localhost:8000/admin/
+

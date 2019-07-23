@@ -1,0 +1,19 @@
+{% extends "ndmu/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+	<div class="content-section">
+		<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Upload to Gallery</legend>
+				{{ form.media }}
+				{{ form|crispy }}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-success">Upload</button>
+			</div>
+			<small>*you can only upload one image at a time.</small>
+		</form>
+	</div>
+{% endblock content %}

@@ -1,0 +1,72 @@
+{% extends "ndmu/base.html" %}
+{% load static %}
+{% block content %}
+<br>
+	<article class="media content-section">
+		<img class="rounded article-img" src="{{ object.author.profile.image.url }}">
+		<div class="media-body">
+		  <div class="article-metadata">
+			<a class="mr-2" href="{% url 'user-posts' object.author.username %}"><font color="red">{{ object.author }}</font></a>
+			<small class="text-muted">{{ object.date_posted|date:"M. j, Y - fA" }}&nbsp; <i>"{{ object.title }}"</i></small>
+		  </div>
+		  {% if post.picture %}
+		  <img src={{object.image_content.url}}/>
+		  {% endif %}
+		  <p class="article-content">{{ object.content | safe }}</p>
+		  {% if object.imgs %}
+		  <img style="height:725px;max-width:500px;width: expression(this.width > 500 ? 500: true);" src="{{ object.imgs.url }}" alt="{{ object.title }} style="width:100%" onclick="currentSlide(1)"/>
+
+		  {% endif %}
+		  		  <hr>
+		  {% if object.author == user %}
+			<a class="btn btn-outline-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}"><i class="fa fa-cog fa-spin"></i></a>
+			<a class="btn btn-outline-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+			{% endif %}
+    		{% if user.is_authenticated %}
+				<a class="btn btn-outline-info btn-sm mt-1 mb-1" href="{% url 'add_comment_to_post' pk=post.pk %}"><i class="fa fa-reply fa-flip-horizontal" aria-hidden="true"></i></a>
+			{% endif %}
+
+		</div>
+	</article>
+
+<hr>
+<br>
+{% for comment in post.comments.all %}
+	<article class="media content-section">
+		{% ifequal comment.author.profile.image.url None %}
+		<img class="rounded article-img" src="{% static 'images/reply.png' %}">
+		{% else %}
+		<img class="rounded article-img" src="{{ comment.author.profile.image.url }}">
+		{% endifequal %}
+		<div class="media-body">
+		  <div class="article-metadata">
+			<small class="text-muted">Update as of <i>{{ comment.created_date|date:"M. j, Y - fA" }}</i> by {{ comment.author|default_if_none:"a Staff" }}</small>
+		  </div>
+		  {% if post.picture %}
+		  <img src={{object.image_content.url}}/>
+		  {% endif %}
+		  <p class="article-content">{{ comment.text|safe }}</p>
+		  {% if object.imgs %}
+		  <img style="height:725px;max-width:500px;width: expression(this.width > 500 ? 500: true);" src="{{ object.imgs.url }}" alt="{{ object.title }} style="width:100%" onclick="currentSlide(1)"/>
+
+		  {% endif %}
+		  		  <hr>
+		</div>
+	</article>
+{% empty %}
+<p>No Updates Yet</p>
+{% endfor %}
+<br>
+Share this on:
+<!-- AddToAny BEGIN -->
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_facebook_messenger"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_email"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+<br>
+
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends "ndmu/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4">Delete Announcement</legend>
+				Are you sure you want to delete <font color="red">{{ object.title }}</font>?
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-outline-danger" type="submit">Yes</button>
+				<a class="btn btn-outline-secondary" href="{% url 'post-detail' object.id %}">Cancel</a>
+			</div>
+		</form>
+
+{% endblock content %}

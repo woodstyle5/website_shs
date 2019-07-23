@@ -1,0 +1,145 @@
+<!--djangondmuwebsite_by_KentJamilaSTEM8-->
+<!--A Capstone Project for Work Immersion and III at Notre Dame of Marbel University SHS Department-->
+
+
+<!--https://github.com/kentjohnjamila/djangondmuwebsite-->
+
+<!--©KentJamila2018-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% load static %}
+<html lang="en">
+<head>
+  <!-- Favicon -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'favicon/apple-touch-icon-144x144.png' %}" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{% static 'favicon/apple-touch-icon-152x152.png' %}" />
+  <link rel="icon" type="image/png" href="{% static 'favicon/favicon-32x32.png' %}" sizes="32x32" />
+  <link rel="icon" type="image/png" href="{% static 'favicon/favicon-16x16.png' %}" sizes="16x16" />
+  <meta name="application-name" content="&nbsp;"/>
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta name="msapplication-TileImage" content="{% static 'favicon/mstile-144x144.png' %}" />
+      <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'ndmu/main.css' %}">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/default.min.css">
+  <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% if title %}
+    <title>NDMU - {{ title }}</title>
+  {% else %}
+    <title>Notre Dame of Marbel University - SHS</title>
+  {% endif %}
+<link rel="stylesheet" type="text/css" href="{% static 'ndmu/fonts.css' %}">
+
+<link rel="stylesheet" type="text/css" href="{% static 'ndmu/whatsnew.css' %}">
+
+<style>
+
+article {
+  float: center;
+  padding: 1px;
+  width: 50%;
+  background-color: black;
+  color:white;
+}
+
+body {
+  background-color: #0f0f0f;
+  color: white;
+  font-family: monsterratimport;
+}
+
+table {
+  border-collapse: collapse;
+  width: 50%;
+}
+
+td, th {
+  text-align: center;
+  padding: 8px;
+}
+
+</style>
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel2 fixed-top">
+          <div class="navbar-nav mr-auto" id="main">
+            <a class="nav-item nav-link" href="{% url 'ndmu-home' %}">Home</a>
+          </div>
+</nav>
+<br>
+<center>
+<img src="{% static 'images/ndmu.png' %}" height="200" width="200"><br>
+
+<center>
+{% block content %}
+{% endblock content %}
+</center>
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!--djangondmuwebsite_by_KentJamilaSTEM8-->
+<!--A Capstone Project for Work Immersion and III at Notre Dame of Marbel University SHS Department-->
+
+
+<!--https://github.com/kentjohnjamila/djangondmuwebsite-->
+
+<!--©KentJamila2018-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+  <!-- Favicon -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'favicon/apple-touch-icon-144x144.png' %}" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{% static 'favicon/apple-touch-icon-152x152.png' %}" />
+  <link rel="icon" type="image/png" href="{% static 'favicon/favicon-32x32.png' %}" sizes="32x32" />
+  <link rel="icon" type="image/png" href="{% static 'favicon/favicon-16x16.png' %}" sizes="16x16" />
+  <meta name="application-name" content="&nbsp;"/>
+  <meta name="msapplication-TileColor" content="#FFFFFF" />
+  <meta name="msapplication-TileImage" content="{% static 'favicon/mstile-144x144.png' %}" />
+
+    <title>Notre Dame of Marbel University</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="{% static 'ndmu/superhomepage.css' %}">
+  </head>
+
+  <body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+               <div class="inner">
+          <h3 class="masthead-brand"></h3>
+          <nav class="nav nav-masthead justify-content-center">
+
+          </nav>
+        </div>
+      </header>
+
+      <main role="main" class="inner cover">
+        <img src="{% static 'images/ndmu.png' %}" alt="ndmu" class="img-circle">
+        <h1 class="cover-heading">404</h1>
+        <p class="lead">PAGE NOT FOUND</p>
+        <p class="lead">
+          <a href="{% url 'ndmu-home' %}" class="btn btn-lg btn-secondary">HOMEPAGE</a>
+        </p>
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p><font color="white">&copy; Notre Dame of Marbel University | Senior High School Department</p></font>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="https://getbootstrap.com/docs/4.0/assets/js/vendor/popper.min.js"></script>
+    <script src="https://getbootstrap.com/docs/4.0/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+@font-face
+{
+  font-family: nexalightimport;
+  src:url("fonts/nexalight.otf");
+}
+
+@font-face
+{
+  font-family: nexaboldimport;
+  src:url("fonts/nexabold.otf");
+}
+
+@font-face
+{
+  font-family: monsterratimport;
+  src:url("fonts/monsterrat.ttf");
+}
